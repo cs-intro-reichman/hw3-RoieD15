@@ -23,9 +23,9 @@ public class Anagram {
 			pass = pass && isAnagram(str, randomAnagram);
 			if (!pass) break;
 		}
-		
 		System.out.println(pass ? "test passed" : "test Failed");
-} 
+	}
+	
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
@@ -65,11 +65,10 @@ public class Anagram {
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
 		String newStr = "";
-		for(int j = 0; j < str.length(); j++) {
-			int randomIndex = (int)Math.random() * str.length();
-			newStr += str.indexOf(randomIndex);
-			String c = "" + str.indexOf(randomIndex);
-			c = "";
+		while(str.length() > 0) {
+			int randomIndex = (int)(Math.random() * str.length());
+			newStr += str.charAt(randomIndex);
+			str = str.substring(0, randomIndex) + str.substring(randomIndex + 1);
 		}
 		return newStr;
 	}
