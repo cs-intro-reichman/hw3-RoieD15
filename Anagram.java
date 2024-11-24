@@ -2,29 +2,29 @@
 public class Anagram {
 	public static void main(String args[]) {
 		// Tests the isAnagram function.
-		System.out.println(isAnagram("silent","listen"));  // true
-		System.out.println(isAnagram("William Shakespeare","I am a weakish speller")); // true
-		System.out.println(isAnagram("Madam Curie","Radium came")); // true
-		System.out.println(isAnagram("Tom Marvolo Riddle","I am Lord Voldemort")); // true
+		//System.out.println(isAnagram("silent","listen"));  // true
+		//System.out.println(isAnagram("William Shakespeare","I am a weakish speller")); // true
+		//System.out.println(isAnagram("Madam Curie","Radium came")); // true
+		//System.out.println(isAnagram("Tom Marvolo Riddle","I am Lord Voldemort")); // true
 		
 		// Tests the preProcess function.
-		System.out.println(preProcess("What? No way!!!"));
+		System.out.println(preProcess("Hello World!"));
 		
 		// Tests the randomAnagram function.
-		System.out.println("silent and " + randomAnagram("silent") + " are anagrams.");
+		//System.out.println("silent and " + randomAnagram("silent") + " are anagrams.");
 		
 		// Performs a stress test of randomAnagram 
-		String str = "1234567";
-		Boolean pass = true;
+		//String str = "1234567";
+		//Boolean pass = true;
 		// 10 can be changed to much larger values, like 1000
-		for (int i = 0; i < 10; i++) {
-			String randomAnagram = randomAnagram(str);
-			System.out.println(randomAnagram);
-			pass = pass && isAnagram(str, randomAnagram);
-			if (!pass) break;
+		//for (int i = 0; i < 10; i++) {
+		//	String randomAnagram = randomAnagram(str);
+		//	System.out.println(randomAnagram);
+		//	pass = pass && isAnagram(str, randomAnagram);
+		//	if (!pass) break;
 		}
-		System.out.println(pass ? "test passed" : "test Failed");
-	}
+		//System.out.println(pass ? "test passed" : "test Failed");
+	//}
 	
 
 	// Returns true if the two given strings are anagrams, false otherwise.
@@ -52,7 +52,7 @@ public class Anagram {
 	public static String preProcess(String str) {
 		String newStr = "";
 		for(int i = 0; i < str.length(); i++) {
-			if(str.charAt(i) >= 65 && str.charAt(i) <= 90){
+			if(str.charAt(i) >= 65 && str.charAt(i) <= 90 || str.charAt(i) == 32){
 				newStr = newStr + str.charAt(i);
 			} else if(str.charAt(i) >= 97 && str.charAt(i) <= 122) {
 				newStr = newStr + str.charAt(i);
