@@ -28,8 +28,8 @@ public class LoanCalc {
 	// Computes the ending balance of a loan, given the loan amount, the periodical
 	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	private static double endBalance(double loan, double rate, int n, double payment) {	
-		Double r = 1.0 + rate / 100.0;
-		Double balance = loan;
+		double r = 1.0 + rate / 100.0;
+		double balance = loan;
 		for(int i = 0; i < n; i++){
 			balance = (balance - payment) * r;
 		}
@@ -43,9 +43,8 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		double g = loan / n;
-		Double r = 1.0 + rate / 100.0;
 		iterationCounter = 0;
-		while(endBalance(loan, r, n, g) > epsilon) {
+		while(endBalance(loan, rate, n, g) > epsilon) {
 				g = g + epsilon;
 				iterationCounter++;
 			}
@@ -60,12 +59,11 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         iterationCounter = 0;
-		Double r = 1.0 + rate / 100.0;
 		double low = loan/n;
 		double high = loan;
 		double g = (low + high) / 2.0;
-		while(Math.abs(high - low) > epsilon) {
-			if((endBalance(loan, r, n, g)) * (endBalance(loan, r, n, low)) > 0){
+		while(high - low > epsilon) {
+			if((endBalance(loan, rate, n, g)) * (endBalance(loan, rate, n, low)) > 0){
 				low = g;
 			} else {
 				high = g;
