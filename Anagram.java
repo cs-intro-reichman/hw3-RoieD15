@@ -33,16 +33,18 @@ public class Anagram {
 		str1 = preProcess(str1);
 		str2 = preProcess(str2);
 		boolean isAnagram = true;
+		if(str1.length() != str2.length()){ 
+			return false;
+		} else {
 			for(int i = 0; i < str2.length(); i++) {
 				if(str2.indexOf(str1.charAt(i)) != -1)
 				isAnagram = isAnagram && true;
 				else 
 				isAnagram = isAnagram && false;
 			}
-			return isAnagram;
 	    }
-	    
-	
+	     return isAnagram;
+}
 
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
