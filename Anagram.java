@@ -2,6 +2,8 @@
 public class Anagram {
 	public static void main(String args[]) {
 		// Tests the isAnagram function.
+		System.out.println(preProcess("William Shakespeare"));
+		System.out.println(preProcess("I am a weakish speller"));
 		System.out.println(isAnagram("William Shakespeare","I am a weakish speller"));  // 
 		//System.out.println(isAnagram("William Shakespeare","I am a weakish speller")); // true
 		//System.out.println(isAnagram("Madam Curie","Radium came")); // true
@@ -29,20 +31,18 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		//
-		str1 = preProcess(str1);
-		str2 = preProcess(str2);
-		boolean isAnagram = true;
-		if(str1.length() != str2.length()){ 
-			return false;
-		} else {
-			for(int i = 0; i < str2.length(); i++) {
-				if(str2.indexOf(str1.charAt(i)) != -1)
-				isAnagram = isAnagram && true;
-				else 
-				isAnagram = isAnagram && false;
+		String str11 = preProcess(str1);
+		String str21 = preProcess(str2);
+		boolean isAnagram = true; 
+			for(int i = 0; i < str11.length(); i++) {
+				for(int j = 0; j < str21.length(); j++) {
+					if(str11.indexOf(str21.charAt(j)) != -1)
+					isAnagram = isAnagram && true;
+					else 
+					isAnagram = isAnagram && false;
+				}
 			}
-	    }
+	    
 	     return isAnagram;
 }
 
